@@ -1,4 +1,4 @@
-import imagenes from '/BSangre/src/assets/imagenes';
+//import imagenes from '/BSangre/src/assets/imagenes';
 
 const Contacto = () => {
     return (
