@@ -20,6 +20,7 @@
     "encrypt-storage": "^2.4.5",
     "fs": "^0.0.1-security",
     "https": "^1.0.0",
+    "nodemon": "^2.0.20",
     "particlesjs": "^2.2.3",
     "react": "^18.2.0",
     "react-awesome-slider": "^4.1.0",
@@ -37,7 +38,7 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
-    "start": "set PORT=8443 HTTPS = true && set SSL_CRT_FILE = Angel_Hernandez.pem && set SSL_KEY_FILE = portafolio.pem && react-scripts start",
+    "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

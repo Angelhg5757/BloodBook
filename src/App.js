@@ -8,7 +8,7 @@ import Login from './navegacion/login';
 import Registro from './navegacion/registro';
 import Acerca from './navegacion/acerca';
 import Dashboard from './navegacion/Dashboard/Dashboard';
-import Tienda from './navegacion/tienda';
+// import Tienda from './navegacion/tienda';
 import Usuarios from './navegacion/Dashboard/usuarios';
 import Layout from './navegacion/Layout';
 import RutaNoEncontrada from './navegacion/RutaNoEncontrada';
@@ -30,7 +30,7 @@ function App() {
           <Route path='/registro' element={<Registro />} />
           <Route path='/admin' element={<Dashboard />} />
           <Route path='/user' element={<Inicio />} />
-          <Route path='/tienda' element={<Tienda />} />
+          {/* <Route path='/tienda' element={<Tienda />} /> */}
           <Route path='/CRUDUsuarios' element={<Usuarios />} />
           <Route path='/update' element={<Update />} />
           <Route path='/updateUser' element={<UpdateUsuarios />} />
