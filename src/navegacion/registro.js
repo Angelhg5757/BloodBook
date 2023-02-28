@@ -7,7 +7,7 @@ import { ROLES } from "../utils/Constantes";
 import { encryptStorage } from "../utils/Storage";
 import Layout from "./Layout";
 import Styles from "./css/registro.css";
-import { FormLabel } from "@mui/material";
+//import { FormLabel } from "@mui/material";
 import { RadioGroup } from "@mui/material";
 import { FormControlLabel } from "@mui/material";
 import { Radio } from "@mui/material";
@@ -67,7 +67,14 @@ const Registro = () => {
                   <input type="text"  required />
                 </div>
                 <div className="input-box">
-                  <span className="details">Apellido</span>
+                  <span className="details">Apellido Paterno</span>
+                  <input
+                    type="text"
+                    required
+                  />
+                </div>
+                <div className="input-box">
+                  <span className="details">Apellido Materno</span>
                   <input
                     type="text"
                     required
@@ -78,29 +85,28 @@ const Registro = () => {
                   <input type="email" placeholder="@ejemplo.com" required />
                 </div>
                 <div className="input-box">
-                  <span className="details">Teléfono</span>
-                  <input type="text"  required />
-                </div>
-                <div className="input-box">
                   <span className="details">Contraseña</span>
                   <input
                     type="password"
                     required
                   />
                 </div>
-                
+                <div className="input-box">
+                  <span className="details">Fecha de nacimiento</span>
+                  <input type="date"  required />
+                </div>
                 <div className="input-box">
                 <span className="details">Tipo Sanguíneo</span>
 
                 <select name="sangre" id="sangre" >
-                  <option value="A+">A+</option>
-                  <option value="A-">A-</option>
-                  <option value="B+">B+</option>
-                  <option value="B-">B-</option>
-                  <option value="AB+">AB+</option>
-                  <option value="AB-">AB-</option>
-                  <option value="O+">O+</option>
-                  <option value="O-">O-</option>
+                  <option value="1">A+</option>
+                  <option value="2">A-</option>
+                  <option value="3">B+</option>
+                  <option value="4">B-</option>
+                  <option value="5">AB+</option>
+                  <option value="6">AB-</option>
+                  <option value="7">O+</option>
+                  <option value="8">O-</option>
                 </select>
                 </div>
               </div>
@@ -114,17 +120,17 @@ const Registro = () => {
                   name="row-radio-buttons-group"
                 >
                   <FormControlLabel
-                    value="femenino"
+                    value="F"
                     control={<Radio />}
                     label="Femenino"
                   />
                   <FormControlLabel
-                    value="masculino"
+                    value="M"
                     control={<Radio />}
                     label="Masculino"
                   />
                   <FormControlLabel
-                    value="otro"
+                    value="O"
                     control={<Radio />}
                     label="Otro"
                   />
