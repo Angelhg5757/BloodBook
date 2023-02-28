@@ -11,7 +11,7 @@ import Styles from "./css/registro.css";
 import { RadioGroup } from "@mui/material";
 import { FormControlLabel } from "@mui/material";
 import { Radio } from "@mui/material";
-import Checkbox from '@mui/material/Checkbox';
+import Checkbox from "@mui/material/Checkbox";
 
 import swal from "sweetalert";
 
@@ -64,21 +64,15 @@ const Registro = () => {
               <div className="user-details">
                 <div className="input-box">
                   <span className="details">Nombre</span>
-                  <input type="text"  required />
+                  <input type="text" required />
                 </div>
                 <div className="input-box">
                   <span className="details">Apellido Paterno</span>
-                  <input
-                    type="text"
-                    required
-                  />
+                  <input type="text" required />
                 </div>
                 <div className="input-box">
                   <span className="details">Apellido Materno</span>
-                  <input
-                    type="text"
-                    required
-                  />
+                  <input type="text" required />
                 </div>
                 <div className="input-box">
                   <span className="details">Email</span>
@@ -86,32 +80,37 @@ const Registro = () => {
                 </div>
                 <div className="input-box">
                   <span className="details">Contraseña</span>
-                  <input
-                    type="password"
-                    required
-                  />
+                  <input type="password" required />
                 </div>
                 <div className="input-box">
                   <span className="details">Fecha de nacimiento</span>
-                  <input type="date"  required />
+                  <input type="date" required />
                 </div>
                 <div className="input-box">
-                <span className="details">Tipo Sanguíneo</span>
+                  <span className="details">Tipo Sanguíneo</span>
 
-                <select name="sangre" id="sangre" >
-                  <option value="1">A+</option>
-                  <option value="2">A-</option>
-                  <option value="3">B+</option>
-                  <option value="4">B-</option>
-                  <option value="5">AB+</option>
-                  <option value="6">AB-</option>
-                  <option value="7">O+</option>
-                  <option value="8">O-</option>
-                </select>
+                  <select name="sangre" id="sangre">
+                    <option value="1">A+</option>
+                    <option value="2">A-</option>
+                    <option value="3">B+</option>
+                    <option value="4">B-</option>
+                    <option value="5">AB+</option>
+                    <option value="6">AB-</option>
+                    <option value="7">O+</option>
+                    <option value="8">O-</option>
+                  </select>
                 </div>
+                <div className="input-box">
+                  <span className="details">¿Qué quieres ser?</span>
+
+                  <select name="rol" id="rol">
+                    <option value="1">Donador</option>
+                    <option value="2">Paciente</option>
+                  </select>
+                </div>
+
               </div>
 
-              
               <div className="input-box">
                 <span className="details">Género</span>
                 <RadioGroup
@@ -135,8 +134,12 @@ const Registro = () => {
                     label="Otro"
                   />
                 </RadioGroup>
-                </div>
-                <FormControlLabel control={<Checkbox />} label="Acepto los términos y condiciones." required/>
+              </div>
+              <FormControlLabel
+                control={<Checkbox />}
+                label="Acepto los términos y condiciones."
+                required
+              />
 
               <div className="button2">
                 <input className="buttons2" type="submit" value="Crear" />
