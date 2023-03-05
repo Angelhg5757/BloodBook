@@ -1,4 +1,4 @@
-import imagenes from "/BSangre/src/assets/imagenes";
+import imagenes from "../assets/imagenes";
 //import styles from "./css/TrabajosStyle.module.css";
 // import About from "./about";
 const Trabajos = () => {
