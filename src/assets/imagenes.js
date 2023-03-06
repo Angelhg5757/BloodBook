@@ -22,6 +22,9 @@ import logo2 from './img/logo22.png';
 import rex from './img/rex.jpg';
 import flippy2 from './img/flippy2.png';
 import background from './img/cool-background1.png';
+import imgCarousel from './img/Carousel1.jpg';
+import imgCarousel1 from './img/Carousel3.jpg';
+import imgCarousel2 from './img/Carousel2.jpg';
 
 export default {
     "logo":logoMenu,
@@ -47,5 +50,8 @@ export default {
     "logo2":logo2,
     "rex":rex,
     "flippy2":flippy2,
-    "back":background
+    "back":background,
+    "imgCarousel":imgCarousel,
+    "imgCarousel1":imgCarousel1,
+    "imgCarousel2":imgCarousel2
 };
