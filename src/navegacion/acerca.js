@@ -1,6 +1,8 @@
 import Layout from "./Layout";
 import Styles from "./css/acerca.css";
 import Footer from "./footer";
+import imagenes from "../assets/imagenes";
+import { CardActionArea } from "@mui/material";
 
 const Acerca = () => {
   return (
@@ -8,13 +10,16 @@ const Acerca = () => {
       <Layout />
       <div className="seccion">
         <div className="about-section">
-          <h1 className="title1">About Us Page</h1>
-          <p className="text">Some text about who we are and what we do.</p>
-          <p className="text">"Insertar frase"</p>
+        <img
+                  src="https://d2lcsjo4hzzyvz.cloudfront.net/blog/wp-content/uploads/2021/06/11125531/Requisitos-para-donar-sangre.jpg"
+                  width={1000}
+                  height={400}
+                />
+          <h1 className="title1">BloodBook</h1>
+    
         </div>
 
-        <div className="title2">
-          <h2>Nuestro equipo</h2>
+        <div className="title2" >
         </div>
         <div className="row1">
           <div className="column">
@@ -28,7 +33,7 @@ const Acerca = () => {
               </div>
               <div className="container">
                 <h2>José Carrasco</h2>
-                <p className="title">CEO & Founder</p>
+                <p className="title">Ingeniero de pruebas</p>
                 <p className="text">
                   Some text that describes me lorem ipsum ipsum lorem.
                 </p>
@@ -51,7 +56,7 @@ const Acerca = () => {
               </div>
               <div className="container">
                 <h2>Ángel Hernández</h2>
-                <p className="title">Art Director</p>
+                <p className="title">Programador</p>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                 <p>angel@example.com</p>
                 <p>
@@ -72,7 +77,7 @@ const Acerca = () => {
               </div>
               <div className="container">
                 <h2>Fabiola Martínez</h2>
-                <p className="title">Art Director</p>
+                <p className="title">Análista de Base de datos</p>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                 <p>fabi@example.com</p>
                 <p>
@@ -93,7 +98,7 @@ const Acerca = () => {
               </div>{" "}
               <div className="container">
                 <h2>Isamayi Velasco</h2>
-                <p className="title">Designer</p>
+                <p className="title">Análista de requerimientos</p>
                 <p>Some text that describes me lorem ipsum ipsum lorem.</p>
                 <p>Mey@example.com</p>
                 <p>

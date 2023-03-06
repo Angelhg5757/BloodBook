@@ -59,7 +59,7 @@ const Login = () => {
                             onChange={e => setCorreo(e.target.value)} />
                         <input  type="password" name="contrasena" placeholder="Contraseña" required="required" className="controls"
                             onChange={e => setPassword(e.target.value)} />
-                        <center><input type="submit"  value="Ingresar" className='buttons1' /></center>
+                        <center><a href="/donador.js"><input type="submit"  value="Ingresar" className='buttons1' /></a> </center>
                         <p>¿No tienes una cuenta? <a href="/registro"> Registrate</a></p>
                     </form>
                 </div>

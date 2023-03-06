@@ -37,8 +37,8 @@ function UncontrolledExample() {
             alt="First slide"
           />
           <Carousel.Caption>
-            <h3>First slide label</h3>
-            <p>Nulla vitae elit libero, a pharetra augue mollis interdum.</p>
+            <h2>BloodBook</h2>
+            <p><h3 >Donar sangre es donar salud y vida. El regalo más preciado que podemos hacerle a alguien en esta vida.</h3></p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -50,8 +50,8 @@ function UncontrolledExample() {
           />
 
           <Carousel.Caption>
-            <h3>Second slide label</h3>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <h2>BloodBook</h2>
+            <p><h3>El corazón más bueno y grande es el de los donantes de sangre.</h3></p>
           </Carousel.Caption>
         </Carousel.Item>
         <Carousel.Item>
@@ -63,10 +63,9 @@ function UncontrolledExample() {
           />
 
           <Carousel.Caption>
-            <h3>Third slide label</h3>
-            <p>
-              Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-            </p>
+          <h2>BloodBook</h2>
+          
+            <p><h3>Un donante es un héroe sin capa. Salva la vida de otros muchas veces sin conocerlos de nada.</h3></p>
           </Carousel.Caption>
         </Carousel.Item>
       </Carousel>
