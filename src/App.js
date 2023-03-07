@@ -15,6 +15,8 @@ import RutaNoEncontrada from './navegacion/RutaNoEncontrada';
 import UsuarioDetalle from './navegacion/UsuarioDetalle';
 import Update from './navegacion/Dashboard/update';
 import UpdateUsuarios from './navegacion/Dashboard/updateUsuarios';
+import  Sidebar  from './navegacion/Sidebar'; 
+import Publicaciones from './navegacion/Publicaciones';
 
 function App() {
   return (
@@ -36,7 +38,7 @@ function App() {
           <Route path='/updateUser' element={<UpdateUsuarios />} />
           <Route path='/usuario/:usuarioId' element={<UsuarioDetalle />} />
           <Route path='*' element={<RutaNoEncontrada />} />
-       
+          <Route path='/publicaciones' element={<Publicaciones/>} />
       </Routes>
     </>
   );

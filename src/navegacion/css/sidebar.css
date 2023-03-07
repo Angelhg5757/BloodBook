@@ -1,0 +1,19 @@
+.logo{
+    height: 60px;
+    background-color: brown;
+}
+.items{
+    height: 20vh;
+    background-color: rgba(120, 120, 126, 0.76);
+    margin-top: 20px;
+    border: 5px solid rgb(117, 15, 15);
+    color: azure;
+}
+.bottom{
+    padding-top: 17vh;
+    height: 10vh;
+    color: burlywood;
+}
+.sidebar{
+    height: 100vh;
+}
