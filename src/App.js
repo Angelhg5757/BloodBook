@@ -17,6 +17,7 @@ import Update from './navegacion/Dashboard/update';
 import UpdateUsuarios from './navegacion/Dashboard/updateUsuarios';
 import  Sidebar  from './navegacion/Sidebar'; 
 import Publicaciones from './navegacion/Publicaciones';
+import Perfil from './navegacion/perfil';
 
 function App() {
   return (
@@ -27,7 +28,7 @@ function App() {
           <Route path='/inicio' element={<Inicio />} />
           <Route path='/acerca' element={<Acerca />} />
           <Route path='/donador' element={<Donador />} />
-         
+          <Route path='/perfil' element={<Perfil />} />
           {/* <Route path='/trabajos' element={<Trabajos />} /> */}
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />

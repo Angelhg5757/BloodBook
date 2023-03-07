@@ -1,4 +1,5 @@
 import React from 'react';
+import './css/publicaciones.css';
 import Sidebar from './Sidebar';
 
 const Publicaciones = () => {

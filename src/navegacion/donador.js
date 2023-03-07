@@ -15,6 +15,8 @@ const Donador = () => {
         <div className="row">
           <div className="col-3">
             <Sidebar />
+            </div>
+            <div className="col-9"> 
             <div className="card">
               <div className="user-details">
                 <div className="input-box">
@@ -53,7 +55,8 @@ const Donador = () => {
           </div>
         </div>
       </div>
-    </div>
+            </div>
+
   );
 };
 

@@ -25,10 +25,6 @@ const Sidebar = () => {
             <MenuItem className="d-flex justify-content-center py-12 items"> 
               <TfiMedall className="w-100 h-25"/> <br/>  LOGROS 
             </MenuItem>
-                <SubMenu title="Más opciones" className="bottom">
-                <MenuItem>Salir</MenuItem>
-                <MenuItem></MenuItem>
-            </SubMenu>
             </Menu>
     </ProSidebar>
     </div>
