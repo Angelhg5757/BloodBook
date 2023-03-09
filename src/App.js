@@ -31,6 +31,7 @@ function App() {
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
           <Route path='/comunidad' element={<Comunidad />} />
+          <Route path='/publicaciones' element={<Publicaciones/>} />
           <Route path='/admin' element={<Dashboard />} />
           <Route path='/user' element={<Inicio />} />
           <Route path='/CRUDUsuarios' element={<Usuarios />} />
@@ -38,7 +39,6 @@ function App() {
           <Route path='/updateUser' element={<UpdateUsuarios />} />
           <Route path='/usuario/:usuarioId' element={<UsuarioDetalle />} />
           <Route path='*' element={<RutaNoEncontrada />} />
-          <Route path='/publicaciones' element={<Publicaciones/>} />
       </Routes>
     </>
   );
