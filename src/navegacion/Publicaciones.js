@@ -15,7 +15,7 @@ const Publicaciones = () => {
 // }, [])
 
   return (
-    <div className="container-fluid">
+    <div className="container-fluid bodypub">
       
         <div className="row">
           <div className="col-2">
@@ -58,7 +58,7 @@ const Publicaciones = () => {
                 rows="6"
               ></textarea>
             </div>
-            <input type="submit" class="btn btn-primary " />
+            <input type="submit" class="btn btn-primary btnenv" />
           </div>
         </div>
         </div>
