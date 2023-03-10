@@ -25,25 +25,25 @@ const Login = () => {
       });
       const data = await res.json();
       if (res.status === 200) {
-        // const email = localStorage.getItem('correo', correo);
-        // console.log(email);
-        const id = localStorage.getItem('idUsuario', data.idUsuario);
+        const email = localStorage.setItem('idUsuario', data.idUsuario);
+        // localStorage.setItem('idUsuario', data.idUsuario);
+        console.log(email);
         console.log(res.status);
-        console.log(id);
+        // console.log(localStorage.setItem('idUsuario', data.idUsuario));
         navigate("/comunidad");
       } else if (res.status === 201) {
-        // const email = localStorage.getItem('correo', correo);
-        // console.log(email);
-        const id = localStorage.getItem('idUsuario', data.idUsuario);
+        const email = localStorage.setItem('idUsuario', data.idUsuario);
+        console.log(email);
+        // localStorage.setItem('idUsuario', data.idUsuario);
         console.log(res.status);
-        console.log(id);
+        // console.log(localStorage.setItem('idUsuario', data.idUsuario));
         navigate("/donador");
       } else if (res.status === 202) {
-        // const email = localStorage.getItem('correo', correo);
-        // console.log(email);
-        const id = localStorage.getItem('idUsuario', data.idUsuario);
+        const email = localStorage.setItem('idUsuario', data.idUsuario);
+        console.log(email);
+        // localStorage.setItem('idUsuario', data.idUsuario);
         console.log(res.status);
-        console.log(id);
+        // console.log(localStorage.setItem('idUsuario', data.idUsuario));
         navigate("/inicio");
       } else {
         swal({
