@@ -38,127 +38,89 @@ const Perfil = () => {
                       width="150px"
                       src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
                     />
-                    <span class="font-weight-bold">Edogaru</span>
-                    <span class="text-black-50">edogaru@mail.com.my</span>
+                    <span class="font-weight-bold">Ángel</span>
+                    <span class="text-black-50">angel@gmail.com</span>
                     <span> </span>
                   </div>
                 </div>
                 <div class="col-md-5 border-right">
                   <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                      <h4 class="text-right">Profile Settings</h4>
+                      <h4 class="text-right"> LOODBOOK</h4>
                     </div>
                     <div class="row mt-2">
                       <div class="col-md-6">
-                        <label class="labels">Name</label>
+                        <label class="labels">Nombre:</label>
                         <input
                           type="text"
                           class="form-control1"
-                          placeholder="first name"
+                          placeholder="Ángel"
                           value=""
                         />
                       </div>
+                      <p></p>
                       <div class="col-md-6">
-                        <label class="labels">Surname</label>
+                        <label class="labels">Apellido Paterno:</label>
                         <input
                           type="text"
                           class="form-control1"
                           value=""
-                          placeholder="surname"
+                          placeholder="Hernández"
                         />
                       </div>
                     </div>
+                    <p></p>
                     <div class="row mt-3">
                       <div class="col-md-12">
-                        <label class="labels">Mobile Number</label>
+                        <label class="labels">Apellido Materno:</label>
                         <input
                           type="text"
                           class="form-control1"
-                          placeholder="enter phone number"
+                          placeholder="Gómez"
+                          value=""
+                        />
+                      </div>
+                      <p></p>
+                      <div class="col-md-12">
+                        <label class="labels">Correo:</label>
+                        <p></p>
+                        <input
+                          type="text"
+                          class="form-control1"
+                          placeholder="angel@gmail.com"
+                          value=""
+                        />
+                      </div>
+                      <p></p>
+                      <div class="col-md-12">
+                        <label class="labels"> Contraseña:</label>
+                        <p></p>
+                        <input
+                          type="text"
+                          class="form-control1"
+                          placeholder="******"
+                          value=""
+                        />
+                      </div>
+                      <p></p>
+                      <div class="col-md-12">
+                        <label class="labels">Fecha de nacimiento</label>
+                        <p></p>
+                        <input
+                          type="text"
+                          class="form-control1"
+                          placeholder="dd/mm/aaaa"
                           value=""
                         />
                       </div>
                       <div class="col-md-12">
-                        <label class="labels">Address Line 1</label>
+                        <label class="labels">Tipo de sangre</label>
+                        <p></p>
                         <input
                           type="text"
                           class="form-control1"
-                          placeholder="enter address line 1"
+                          placeholder="A+"
                           value=""
-                        />
-                      </div>
-                      <div class="col-md-12">
-                        <label class="labels">Address Line 2</label>
-                        <input
-                          type="text"
-                          class="form-control1"
-                          placeholder="enter address line 2"
-                          value=""
-                        />
-                      </div>
-                      <div class="col-md-12">
-                        <label class="labels">Postcode</label>
-                        <input
-                          type="text"
-                          class="form-control1"
-                          placeholder="enter address line 2"
-                          value=""
-                        />
-                      </div>
-                      <div class="col-md-12">
-                        <label class="labels">State</label>
-                        <input
-                          type="text"
-                          class="form-control1"
-                          placeholder="enter address line 2"
-                          value=""
-                        />
-                      </div>
-                      <div class="col-md-12">
-                        <label class="labels">Area</label>
-                        <input
-                          type="text"
-                          class="form-control1"
-                          placeholder="enter address line 2"
-                          value=""
-                        />
-                      </div>
-                      <div class="col-md-12">
-                        <label class="labels">Email ID</label>
-                        <input
-                          type="text"
-                          class="form-control1"
-                          placeholder="enter email id"
-                          value=""
-                        />
-                      </div>
-                      <div class="col-md-12">
-                        <label class="labels">Education</label>
-                        <input
-                          type="text"
-                          class="form-control1"
-                          placeholder="education"
-                          value=""
-                        />
-                      </div>
-                    </div>
-                    <div class="row mt-3">
-                      <div class="col-md-6">
-                        <label class="labels">Country</label>
-                        <input
-                          type="text"
-                          class="form-control1"
-                          placeholder="country"
-                          value=""
-                        />
-                      </div>
-                      <div class="col-md-6">
-                        <label class="labels">State/Region</label>
-                        <input
-                          type="text"
-                          class="form-control1"
-                          value=""
-                          placeholder="state"
                         />
                       </div>
                     </div>
