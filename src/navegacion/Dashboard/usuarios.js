@@ -8,6 +8,8 @@ import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
 import swal from 'sweetalert';
+import NavbarDashboard from './NavBar';
+import SlideBar from './Slidebar';
 
 const Usuarios = () => {
     /* ------------Usuarios--------------------------------*/
@@ -109,23 +111,26 @@ const Usuarios = () => {
 
     return (
         <>
-            <div className='Users'>
+            {/* <div className='Users'>
                 <div className="slidebar2">
                     <div className="logo">
                         <a href=""></a>
                     </div>
                     <ul>
-                        {/* <li><a href="/admin#dashboard" id="targeted">dashboard</a></li> */}
+                         <li><a href="/admin#dashboard" id="targeted">dashboard</a></li> 
                         <li><a href="/admin">CRUD Roles</a></li>
                         <li><a href="/CRUDUsuarios">CRUD Usuarios</a></li>
                     </ul>
-                </div>
-                <div className="main2">
-
-                    <div id="media">
-                        <h3 className="header1">CRUD Usuarios</h3>
+                </div> */}
+                <NavbarDashboard/>
+                <SlideBar/>
+                <div className="container">
+                    <div className="row">
+                        <div className="col-4">
+                        <br/><br/>
+                        <h3 className="header1 text-center">CRUD Usuarios</h3>
                         <div className='usuarios'>
-                            <form method="POST" className="formula33" onSubmit={registerUsu}>
+                            <form method="POST" className='text-center' onSubmit={registerUsu}>
                                 <div className>
                                     <label for="" className="etiqueta">Correo electronico</label>
                                     <input type="email" className="inN" onChange={e => setCorreo(e.target.value)} required/>
@@ -153,7 +158,12 @@ const Usuarios = () => {
                                 <input type="submit" className="regi" value="Crear" />
                             </form>
                             <br></br>
-                            <div className="tab2">
+                        </div>
+                    </div>
+                    <div className='col-8'> 
+                        
+                    <div className="tab2">
+                        <br/><br/>
                                 <TableContainer>
                                     <Table>
                                         <TableHead>
@@ -199,10 +209,15 @@ const Usuarios = () => {
                                     </Table>
                                 </TableContainer>
                             </div>
+                    </div>
+                </div>
+                <div className="main2">
+
+                    <div id="media">
+                        
                         </div>
                     </div>
                 </div>
-            </div>
         </>
     );
 };
