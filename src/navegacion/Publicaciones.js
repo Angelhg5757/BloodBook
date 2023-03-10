@@ -17,13 +17,12 @@ const Publicaciones = () => {
   return (
     <div className="container-fluid">
       
-      {/* container-fluid */}
-      <div className="col-11">
         <div className="row">
-          <div className="col-3">
+          <div className="col-2">
+        
             <Sidebar />
           </div>
-          <div className="col-9 text-center mt-3">
+          <div className="col-10 text-center mt-3 inv">
             <h3>
               Invita a tus contactos para que formen parte de tu comunidad y en
               caso de emergencia poder contactarlos rápidamente
@@ -34,43 +33,35 @@ const Publicaciones = () => {
               que tus contactos se puedan registrar
             </h5>{" "}
             <br /> <br />
-            <div class="input-group">
+            <div class="input-group cod">
               <input type="text" placeholder="Tú código" class="form-control" />
             </div>
             <br /> <br />
             <div class="mb-3">
-              <label for="exampleFormControlInput1" class="">
+              <label for="exampleFormControlInput1" class="tit">
                 Título de la publicación
               </label>
               <input
                 type="text"
-                class="form-control"
+                class="form-control cod"
                 id="exampleFormControlInput1"
                 placeholder="Título aquí"
               />
             </div>
             <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label">
+              <label for="exampleFormControlTextarea1" class="form-label tit">
                 Descripción
               </label>
               <textarea
-                class="form-control"
+                class="form-control cod"
                 id="exampleFormControlTextarea1"
                 rows="6"
               ></textarea>
             </div>
-            <input type="submit" class="btn btn-primary" />
+            <input type="submit" class="btn btn-primary " />
           </div>
         </div>
-      </div>
-      {/* <ul>
-      {apiData.map((data) => {
-            return (
-        <li>{data.titulo}</li>
-        )
-        })}
-      </ul> */}
-    </div>
+        </div>
   );
 };
 

@@ -1,15 +1,15 @@
 import './Dashboard.css';
 import React, { useEffect, useState } from 'react';
 import axios from "axios";
-// import "bootstrap/dist/css/bootstrap.min.css";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
-//import { Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap';
 import { Button } from 'semantic-ui-react';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { TableContainer, Table, TableHead, TableBody, TableRow, TableCell } from '@mui/material';
 import swal from 'sweetalert';
+import SlideBar from './Slidebar';
+import NavbarDashboard from './NavBar';
 
 const Dashboard = () => {
     const MostrarAlerta = () => {
@@ -102,25 +102,27 @@ const Dashboard = () => {
     }
 
     return (
-        <div className="Users">
-            <div className="slidebar2">
+        <div>
+           {/*  <div className="slidebar2">
                 <div className="logo">
                     <a href=""></a>
                 </div>
                 <ul>
-                    {/* <li><a href="#dashboard" id="targeted">dashboard</a></li> */}
+                    <li><a href="#dashboard" id="targeted">dashboard</a></li>
                     <li><a href="">CRUD Roles</a></li>
                     <li><a href="/CRUDUsuarios">CRUD Usuarios</a></li>
-                    {/* <li><a href="#pages">pages</a></li>
+                    <li><a href="#pages">pages</a></li>
                     <li><a href="#links">links</a></li>
                     <li><a href="#comments">comments</a></li>
                     <li><a href="#widgets">widgets</a></li>
                     <li><a href="#plugins">plugins</a></li>
                     <li><a href="#users">users</a></li>
                     <li><a href="#tools">tools</a></li>
-                    <li><a href="#settings">settings</a></li> */}
+                    <li><a href="#settings">settings</a></li> 
                 </ul>
-            </div>
+            </div> */}
+            <NavbarDashboard />
+            <SlideBar/>
             <div className="main2">
                 {/* <ul className="topbar clearfix">
                     <li><a href="#">1</a></li>
@@ -155,10 +157,12 @@ const Dashboard = () => {
 
                     </div> */}
 
-
-                    <div id="media">
-                        <h2 className="header1">CRUD Roles</h2>
-                        <div className='usuarios'>
+                    <div className="container">
+                        <div className="row">
+                            <div className="col-4">
+                                <br /><br />
+                            <h2 className="header1 text-center">CRUD Roles</h2>
+                        <div className='usuarios text-center'>
                             <form method="POST" className="formula3" onSubmit={register}>
                                 <div className>
                                     <label for="" className="etiqueta">Nombre</label>
@@ -171,8 +175,11 @@ const Dashboard = () => {
                                 </div>
                                 <input type="submit" className="regi" value="Crear" />
                             </form>
-                            <br></br>
-                            <div className="tab2">
+                            </div>    
+                        </div>
+                        <div className="col-8">
+                        <div className="tab2">
+                        <br /><br />
                                 <TableContainer>
                                     <Table>
                                         <TableHead>
@@ -210,6 +217,12 @@ const Dashboard = () => {
                                     </Table>
                                 </TableContainer>
                             </div>
+                        </div>
+                    </div>
+                    <div id="media">
+                        
+                            <br></br>
+                            
                         </div>
                     </div>
 
