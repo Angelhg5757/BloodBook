@@ -1,4 +1,4 @@
-body{
+.bodypub{
     background-color: #00226693;
 } 
 .inv h3{
@@ -20,12 +20,12 @@ body{
     font-size: 20px;
     color: azure;
 }
-.btn{
+.btnev{
     width: 300px;
     background-color:plum;
     border: 2px solid pink;
 }
-.btn:hover{
+.btnev:hover{
     width: 300px;
     background-color:rgba(212, 45, 162, 0.532);
     border: 2px solid rgb(118, 24, 95);
