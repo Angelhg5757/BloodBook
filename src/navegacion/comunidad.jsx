@@ -22,18 +22,21 @@ const Comunidad = () => {
 
     return (
         <>
-            <div class="container">
-                <div class="row">
-                    <div class="col">
+            <div className="container">
+                <div className="row">
+                    <div className="col">
                         <Sidebar />
                     </div>
-                    <div class="col">
-                        {data.map((item, index) => (
-                                <div className="col-6" key={index}>
-                                    <h2>{item.titulo}</h2>
-                                    <p>{item.descripcion}</p>
-                                </div>
-                        ))}
+                    <div className="col">
+                        <div className="">
+                            {data.map((item, index) => (
+                                    <div className="col-6" key={index}>
+                                        <h2>{item.titulo}</h2>
+                                        <p>{item.descripcion}</p>
+                                        <input type="submit" value="Contactar" className="buttons2" />
+                                    </div>
+                            ))}
+                        </div>
                     </div>
                 </div>
             </div>

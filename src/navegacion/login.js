@@ -23,14 +23,27 @@ const Login = () => {
           password: password,
         }),
       });
+      const data = await res.json();
       if (res.status === 200) {
+        // const email = localStorage.getItem('correo', correo);
+        // console.log(email);
+        const id = localStorage.getItem('idUsuario', data.idUsuario);
         console.log(res.status);
+        console.log(id);
         navigate("/comunidad");
       } else if (res.status === 201) {
+        // const email = localStorage.getItem('correo', correo);
+        // console.log(email);
+        const id = localStorage.getItem('idUsuario', data.idUsuario);
         console.log(res.status);
+        console.log(id);
         navigate("/donador");
       } else if (res.status === 202) {
+        // const email = localStorage.getItem('correo', correo);
+        // console.log(email);
+        const id = localStorage.getItem('idUsuario', data.idUsuario);
         console.log(res.status);
+        console.log(id);
         navigate("/inicio");
       } else {
         swal({
