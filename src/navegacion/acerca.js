@@ -10,17 +10,15 @@ const Acerca = () => {
       <Layout />
       <div className="seccion">
         <div className="about-section">
-        <img
+          <h1 className="title1">BloodBook</h1>
+          {/* <img
                   src="https://d2lcsjo4hzzyvz.cloudfront.net/blog/wp-content/uploads/2021/06/11125531/Requisitos-para-donar-sangre.jpg"
                   width={1000}
                   height={400}
-                />
-          <h1 className="title1">BloodBook</h1>
-    
+                /> */}
         </div>
 
-        <div className="title2" >
-        </div>
+        <div className="title2"></div>
         <div className="row1">
           <div className="column">
             <div className="card">
@@ -68,7 +66,7 @@ const Acerca = () => {
 
           <div className="column">
             <div className="card">
-            <div className="imag">
+              <div className="imag">
                 <img
                   src="https://cdn-icons-png.flaticon.com/512/1077/1077114.png"
                   width={200}

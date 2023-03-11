@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router";
 import Layout from "./Layout";
 import Styles from "./css/login.css";
@@ -8,6 +8,14 @@ const Login = () => {
   let navigate = useNavigate();
   const [correo, setCorreo] = useState();
   const [password, setPassword] = useState();
+
+  function preventGoingBack() {
+    navigate('/login');
+  }
+
+  useEffect(() => {
+    preventGoingBack();
+  }, []);
 
   let inSesion = async (e) => {
     e.preventDefault();
@@ -74,6 +82,7 @@ const Login = () => {
       console.log(error);
     }
   };
+  
 
   return (
     <>
@@ -115,65 +124,3 @@ const Login = () => {
 };
 
 export default Login;
-
-/*
-   let usuario = [];
-   let rol = "";
-   let acceso = false;
-   let tokenData = "";
-
-   const validarUsuario = async e => {
-       try {
-           if (correo.trim() !== "" && password.trim() !== "") {
-               UsuarioServicio.login(
-                   {
-                       "correo": correo,
-                       "contrasenia": password
-                   }
-               ).then(response => {
-                   console.log("Estoy en then");
-                   acceso = true;
-                   usuario = [response.data.usuario];
-                   tokenData = response.data.tokenData;
-
-                   console.log(usuario[0]);
-                   console.log(usuario[0].rol.nombre);
-                   encryptStorage.setItem('oC', usuario[0].correo);
-                   encryptStorage.setItem('tokenData', tokenData);
-                   rol = usuario[0].rol.nombre;
-                   redirigir();
-               }).catch(e => {
-                   acceso = false;
-                   console.log("catch -> e: " + e);
-               })
-           } else {
-               acceso = false;
-               console.log("else -> e: " + e);
-           }
-
-       } catch (error) {
-           console.log("error " + error);
-       }
-   }
-
-   const redirigir = () => {
-       try {
-           console.log('rol: ' + rol);
-           console.log('acceso: ' + acceso);
-           encryptStorage.setItem('oR', rol);
-           localStorage.clear();
-           switch (rol) {
-               case ROLES.ADMIN:
-                   navigate('/admin');
-                   break;
-               case ROLES.EMPLEADO:
-                   navigate('/ventas');
-                   break;
-               default:
-                   console.log("estoy en default");
-           }
-       } catch (error) {
-           console.log("error " + error);
-       }
-   }
-   */

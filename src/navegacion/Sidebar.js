@@ -20,7 +20,7 @@ const SlideBar = () => {
         if(!id){
             console.log("Eliminado");
         }
-        navigate("/login");
+        navigate('/inicio', {replace: true});
     };
 
     return (

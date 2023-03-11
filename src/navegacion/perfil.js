@@ -5,6 +5,8 @@ import Sidebar from "./Sidebar";
 import "./css/perfil.css";
 import { MdBloodtype } from "react-icons/md";
 import { BiHappyBeaming } from "react-icons/bi";
+import images from "../assets/imagenes";
+import { borderColor } from "@mui/system";
 
 const Perfil = () => {
   const [data, setApiData] = useState([]);
@@ -26,14 +28,6 @@ const Perfil = () => {
     SetfechaNac(localStorage.getItem('fechaNac'));
     SetSangre(localStorage.getItem('sangre'));
   }, [])
-
-
-  // useEffect(() => {
-  //   axios.get(`http://localhost:4000/usuario/listar/${id}`)
-  //       .then((getData) => {
-  //           setApiData(getData.data);
-  //       })
-  // }, []);
 
   return (
     <div>
@@ -66,7 +60,8 @@ const Perfil = () => {
                     <img
                       class="rounded-circle mt-5"
                       width="150px"
-                      src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
+                      //https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg
+                      src={images.avatar}
                     />
                     <span class="font-weight-bold">{nombre}</span>
                     <span class="text-black-50">{correo}</span>
@@ -86,6 +81,7 @@ const Perfil = () => {
                           class="form-control1"
                           placeholder=""
                           value={nombre}
+                          disabled
                         />
                       </div>
                       <p></p>
@@ -96,6 +92,7 @@ const Perfil = () => {
                           class="form-control1"
                           value={apePat}
                           placeholder="Hernández"
+                          disabled
                         />
                       </div>
                     </div>
@@ -108,6 +105,7 @@ const Perfil = () => {
                           class="form-control1"
                           placeholder=""
                           value={apeMat}
+                          disabled
                         />
                       </div>
                       <p></p>
@@ -119,17 +117,7 @@ const Perfil = () => {
                           class="form-control1"
                           placeholder=""
                           value={correo}
-                        />
-                      </div>
-                      <p></p>
-                      <div class="col-md-12">
-                        <label class="labels"> Contraseña:</label>
-                        <p></p>
-                        <input
-                          type="text"
-                          class="form-control1"
-                          placeholder="******"
-                          // value=""
+                          disabled
                         />
                       </div>
                       <p></p>
@@ -141,6 +129,7 @@ const Perfil = () => {
                           class="form-control1"
                           placeholder=""
                           value={fechaNac}
+                          disabled
                         />
                       </div>
                       <div class="col-md-12">
@@ -151,6 +140,7 @@ const Perfil = () => {
                           class="form-control1"
                           placeholder=""
                           value={sangre}
+                          disabled
                         />
                       </div>
                     </div>

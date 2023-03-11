@@ -41,9 +41,11 @@
 .about-section {
   padding: 50px;
   text-align: center;
-  background-color: #474e5d;
   color: white;
   height: 280px;
+  background-image: url(https://d2lcsjo4hzzyvz.cloudfront.net/blog/wp-content/uploads/2021/06/11125531/Requisitos-para-donar-sangre.jpg);
+  background-position: center;
+  background-size:cover;
 }
 
 .container {

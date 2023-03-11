@@ -34,8 +34,6 @@ const Comunidad = () => {
             })
     }
 
-    // let navigate = useNavigate();
-    // const idUsuario = localStorage.getItem('idUsuario');
 
     const onContacto = (idPublicaciones, telefono, correoPublico) => {
         const idUser = localStorage.getItem('idUsuario');
