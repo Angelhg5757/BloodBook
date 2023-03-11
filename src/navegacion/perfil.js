@@ -1,10 +1,40 @@
-import React from "react";
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+
 import Sidebar from "./Sidebar";
 import "./css/perfil.css";
 import { MdBloodtype } from "react-icons/md";
 import { BiHappyBeaming } from "react-icons/bi";
 
 const Perfil = () => {
+  const [data, setApiData] = useState([]);
+
+  const [id, setId] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [apePat, setApePat] = useState('');
+  const [apeMat, setApeMat] = useState('');
+  const [correo, setCorreo] = useState('');
+  const [fechaNac, SetfechaNac] = useState('');
+  const [sangre, SetSangre] = useState('');
+
+  useEffect(() => {
+    setId(localStorage.getItem('idUsuario'));
+    setNombre(localStorage.getItem('nombre'));
+    setApePat(localStorage.getItem('apePat'));
+    setApeMat(localStorage.getItem('apeMat'));
+    setCorreo(localStorage.getItem('correo'));
+    SetfechaNac(localStorage.getItem('fechaNac'));
+    SetSangre(localStorage.getItem('sangre'));
+  }, [])
+
+
+  // useEffect(() => {
+  //   axios.get(`http://localhost:4000/usuario/listar/${id}`)
+  //       .then((getData) => {
+  //           setApiData(getData.data);
+  //       })
+  // }, []);
+
   return (
     <div>
       <div className="container-fluid bodyper">
@@ -38,15 +68,15 @@ const Perfil = () => {
                       width="150px"
                       src="https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg"
                     />
-                    <span class="font-weight-bold">Ángel</span>
-                    <span class="text-black-50">angel@gmail.com</span>
+                    <span class="font-weight-bold">{nombre}</span>
+                    <span class="text-black-50">{correo}</span>
                     <span> </span>
                   </div>
                 </div>
                 <div class="col-md-5 border-right">
                   <div class="p-3 py-5">
                     <div class="d-flex justify-content-between align-items-center mb-3">
-                      <h4 class="text-right"> LOODBOOK</h4>
+                      <h4 class="text-right"> BLOODBOOK</h4>
                     </div>
                     <div class="row mt-2">
                       <div class="col-md-6">
@@ -54,8 +84,8 @@ const Perfil = () => {
                         <input
                           type="text"
                           class="form-control1"
-                          placeholder="Ángel"
-                          value=""
+                          placeholder=""
+                          value={nombre}
                         />
                       </div>
                       <p></p>
@@ -64,20 +94,20 @@ const Perfil = () => {
                         <input
                           type="text"
                           class="form-control1"
-                          value=""
+                          value={apePat}
                           placeholder="Hernández"
                         />
                       </div>
                     </div>
                     <p></p>
                     <div class="row mt-3">
-                      <div class="col-md-12">
+                      <div class="col-md-6">
                         <label class="labels">Apellido Materno:</label>
                         <input
                           type="text"
                           class="form-control1"
-                          placeholder="Gómez"
-                          value=""
+                          placeholder=""
+                          value={apeMat}
                         />
                       </div>
                       <p></p>
@@ -87,8 +117,8 @@ const Perfil = () => {
                         <input
                           type="text"
                           class="form-control1"
-                          placeholder="angel@gmail.com"
-                          value=""
+                          placeholder=""
+                          value={correo}
                         />
                       </div>
                       <p></p>
@@ -99,7 +129,7 @@ const Perfil = () => {
                           type="text"
                           class="form-control1"
                           placeholder="******"
-                          value=""
+                          // value=""
                         />
                       </div>
                       <p></p>
@@ -109,8 +139,8 @@ const Perfil = () => {
                         <input
                           type="text"
                           class="form-control1"
-                          placeholder="dd/mm/aaaa"
-                          value=""
+                          placeholder=""
+                          value={fechaNac}
                         />
                       </div>
                       <div class="col-md-12">
@@ -119,19 +149,19 @@ const Perfil = () => {
                         <input
                           type="text"
                           class="form-control1"
-                          placeholder="A+"
-                          value=""
+                          placeholder=""
+                          value={sangre}
                         />
                       </div>
                     </div>
-                    <div class="mt-5 text-center">
+                    {/* <div class="mt-5 text-center">
                       <button
                         class="btn btn-primary profile-button1"
                         type="button"
                       >
                         Save Profile
                       </button>
-                    </div>
+                    </div> */}
                   </div>
                 </div>
               </div>

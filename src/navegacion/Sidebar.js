@@ -11,6 +11,12 @@ const SlideBar = () => {
 
     const handleLogout = () => {
         localStorage.removeItem('idUsuario');
+        localStorage.removeItem('nombre');
+        localStorage.removeItem('apePat');
+        localStorage.removeItem('apeMat');
+        localStorage.removeItem('correo');
+        localStorage.removeItem('fechaNac');
+        localStorage.removeItem('sangre');
         if(!id){
             console.log("Eliminado");
         }

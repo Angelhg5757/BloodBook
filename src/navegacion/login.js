@@ -25,26 +25,43 @@ const Login = () => {
       });
       const data = await res.json();
       if (res.status === 200) {
-        const email = localStorage.setItem('idUsuario', data.idUsuario);
-        // localStorage.setItem('idUsuario', data.idUsuario);
-        console.log(email);
+        const id = localStorage.setItem('idUsuario', data.idUsuario);
+        localStorage.setItem('nombre', data.nombre);
+        localStorage.setItem('apePat', data.apePat);
+        localStorage.setItem('apeMat', data.apeMat);
+        localStorage.setItem('correo', data.correo);
+        localStorage.setItem('fechaNac', data.fechaNac);
+        localStorage.setItem('sangre', data.sangre);
+        console.log(id);
         console.log(res.status);
-        // console.log(localStorage.setItem('idUsuario', data.idUsuario));
+       
         navigate("/comunidad");
       } else if (res.status === 201) {
-        const email = localStorage.setItem('idUsuario', data.idUsuario);
-        console.log(email);
-        // localStorage.setItem('idUsuario', data.idUsuario);
+        const id = localStorage.setItem('idUsuario', data.idUsuario);
+        localStorage.setItem('nombre', data.nombre);
+        localStorage.setItem('apePat', data.apePat);
+        localStorage.setItem('apeMat', data.apeMat);
+        localStorage.setItem('correo', data.correo);
+        localStorage.setItem('fechaNac', data.fechaNac);
+        localStorage.setItem('sangre', data.sangre);
+        console.log(id);
+        
         console.log(res.status);
-        // console.log(localStorage.setItem('idUsuario', data.idUsuario));
-        navigate("/donador");
+        
+        navigate("/perfil");
       } else if (res.status === 202) {
-        const email = localStorage.setItem('idUsuario', data.idUsuario);
-        console.log(email);
-        // localStorage.setItem('idUsuario', data.idUsuario);
+        const id = localStorage.setItem('idUsuario', data.idUsuario);
+        localStorage.setItem('nombre', data.nombre);
+        localStorage.setItem('apePat', data.apePat);
+        localStorage.setItem('apeMat', data.apeMat);
+        localStorage.setItem('correo', data.correo);
+        localStorage.setItem('fechaNac', data.fechaNac);
+        localStorage.setItem('sangre', data.sangre);
+        console.log(id);
+        
         console.log(res.status);
-        // console.log(localStorage.setItem('idUsuario', data.idUsuario));
-        navigate("/inicio");
+        
+        navigate("/admin");
       } else {
         swal({
           title: "Error al iniciar sesión",

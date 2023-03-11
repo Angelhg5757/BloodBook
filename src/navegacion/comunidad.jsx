@@ -11,7 +11,7 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 const Comunidad = () => {
-    const [data, setApiData] = useState([]);
+    const [data, setApiData] = useState([]);;
 
     useEffect(() => {
         axios.get(`http://localhost:4000/publicacion/listar`)
@@ -27,11 +27,20 @@ const Comunidad = () => {
             })
     }
 
+    const getData2 = () => {
+        axios.get(`http://localhost:4000/usuario/listar`)
+            .then((getData) => {
+                setApiData(getData.data);
+            })
+    }
+
     // let navigate = useNavigate();
     // const idUsuario = localStorage.getItem('idUsuario');
 
-    const onContacto = (idPublicaciones) => {
-        localStorage.setItem('idUsuario', data.idUsuario);
+    const onContacto = (idPublicaciones, telefono, correoPublico) => {
+        const idUser = localStorage.getItem('idUsuario');
+        const tel = telefono;
+        const correo = correoPublico;
         swal({
             title: "Contactar al usuario",
             text: "¿Está seguro que desea contactar al usuario de esta publicación?",
@@ -39,14 +48,26 @@ const Comunidad = () => {
             buttons: ["No", "Si"]
         }).then(contacta => {
             if (contacta) {
-                axios.put(`http://localhost:9596/administrador/usuario/${idPublicaciones}`)
+                axios.put(`http://localhost:4000/publicacion/actualizar/${idPublicaciones}`)
                     .then(() => {
                         getData();
                     })
+                axios.put(`http://localhost:4000/usuario/actualizarStatus/${idUser}`)
+                    .then(()=>{
+                        getData2();
+                    })
                 swal({
-                    text: "El usuario ha sido eliminado con éxito",
-                    icon: "success"
+                    title: "Ha establecido contacto. Gracias!",
+                    text: "El telefono del usuario es: " + tel + "\n" + "El correo del usuario es: " + correo,
+                    icon: "success",
+                    button: "Aceptar"
+                }).then(acepta =>{
+                    if(acepta){
+                        window.location.reload();
+                    }
+                    
                 })
+                
             }
         })
     }
@@ -102,16 +123,18 @@ const Comunidad = () => {
                                     <Typography gutterBottom variant="h5" component="div">
                                         {item.titulo}
                                     </Typography>
-                                    <Typography sx={{ color: "#fafafa" }} variant="h7" color="text.secondary">
-                                        {item.nombre}{' '}{item.apePat}{' '}{item.apeMat}
+                                    <Typography sx={{ color: "#fafafa" }} variant="h6" color="text.secondary">
+                                        {item.nombre}{' '}{item.apePat}{' '}{item.apeMat}{' '}
+                                    </Typography>
+                                    <Typography sx={{ color: "fafafa" }} variant="body2" color="text.secondary">
+                                            {'Tipo de Sangre: '}{' '}{item.tipo}
                                     </Typography>
                                     <Typography sx={{ color: "#fafafa" }} variant="body1" color="text.secondary">
                                         {item.descripcion}
                                     </Typography>
                                 </CardContent>
                                 <CardActions>
-                                    <Button variant="contained" size="medium" type="submit" onClick={() => onContacto(item.idPublicaciones)}>Contactar</Button>
-                                    {/* <Button size="small">Learn More</Button> */}
+                                    <Button variant="contained" size="medium" type="submit" onClick={() => onContacto(item.idPublicaciones, item.telefono, item.correoPublico)}>Contactar</Button>
                                 </CardActions>
                             </Card>
                         ))}
