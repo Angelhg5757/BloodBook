@@ -11,6 +11,11 @@ const Publicaciones = () => {
   let navigate = useNavigate();
   const [titulo, setTitulo] = useState();
   const [descripcion, setDescripcion] = useState();
+  const [id, setId] = useState('');
+
+  useEffect(() => {
+    setId(localStorage.getItem('idUsuario'));
+  }, [])
 
   let register = async (e) => {
     const idUser = localStorage.getItem('idUsuario');
@@ -40,6 +45,10 @@ const Publicaciones = () => {
     } catch (error) {
       console.log(error);
     }
+  }
+
+  if(id == null) {
+    navigate("*");
   }
 
   return (

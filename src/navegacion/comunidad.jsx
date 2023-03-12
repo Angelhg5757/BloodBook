@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import Sidebar from "./Sidebar";
 import swal from "sweetalert";
 
@@ -11,7 +12,13 @@ import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
 
 const Comunidad = () => {
-    const [data, setApiData] = useState([]);;
+    const [data, setApiData] = useState([]);
+    let navigate = useNavigate();
+    const [id, setId] = useState('');
+
+    useEffect(() => {
+        setId(localStorage.getItem('idUsuario'));
+    }, [])
 
     useEffect(() => {
         axios.get(`http://localhost:4000/publicacion/listar`)
@@ -51,7 +58,7 @@ const Comunidad = () => {
                         getData();
                     })
                 axios.put(`http://localhost:4000/usuario/actualizarStatus/${idUser}`)
-                    .then(()=>{
+                    .then(() => {
                         getData2();
                     })
                 swal({
@@ -59,15 +66,19 @@ const Comunidad = () => {
                     text: "El telefono del usuario es: " + tel + "\n" + "El correo del usuario es: " + correo,
                     icon: "success",
                     button: "Aceptar"
-                }).then(acepta =>{
-                    if(acepta){
+                }).then(acepta => {
+                    if (acepta) {
                         window.location.reload();
                     }
-                    
+
                 })
-                
+
             }
         })
+    }
+
+    if (id == null) {
+        navigate("*");
     }
 
     // const sendDataToAPI = () => {
@@ -125,7 +136,7 @@ const Comunidad = () => {
                                         {item.nombre}{' '}{item.apePat}{' '}{item.apeMat}{' '}
                                     </Typography>
                                     <Typography sx={{ color: "fafafa" }} variant="body2" color="text.secondary">
-                                            {'Tipo de Sangre: '}{' '}{item.tipo}
+                                        {'Tipo de Sangre: '}{' '}{item.tipo}
                                     </Typography>
                                     <Typography sx={{ color: "#fafafa" }} variant="body1" color="text.secondary">
                                         {item.descripcion}
