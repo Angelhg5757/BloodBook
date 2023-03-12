@@ -1,17 +1,10 @@
 import "./css/inicio.css";
 import Layout from "./Layout";
 import Footer from "./footer";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Carousel from "react-bootstrap/Carousel";
 import imagenes from "../assets/imagenes";
-
-import Timeline from "@mui/lab/Timeline";
-import TimelineItem from "@mui/lab/TimelineItem";
-import TimelineSeparator from "@mui/lab/TimelineSeparator";
-import TimelineConnector from "@mui/lab/TimelineConnector";
-import TimelineContent from "@mui/lab/TimelineContent";
-import TimelineOppositeContent from "@mui/lab/TimelineOppositeContent";
-import TimelineDot from "@mui/lab/TimelineDot";
+import { useNavigate } from "react-router";
 
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import AddToQueueIcon from "@mui/icons-material/AddToQueue";
@@ -23,7 +16,18 @@ import {FaHighlighter} from 'react-icons/fa';
 import {FaSlideshare} from 'react-icons/fa';
 import {BsAlarm} from 'react-icons/bs';
 import {IoMdRepeat} from 'react-icons/io';
+
 function UncontrolledExample() {
+  // let navigate = useNavigate();
+
+  // function preventGoingBack() {
+  //   navigate('/login');
+  // }
+
+  // useEffect(() => {
+  //   preventGoingBack();
+  // }, []);
+
   return (
     <>
       <Layout />

@@ -2,27 +2,54 @@
 import "./css/publicaciones.css";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 import Sidebar from "./Sidebar";
+import swal from "sweetalert";
 
 const Publicaciones = () => {
-//   const [apiData, setApiData] = useState([]);
 
-//   useEffect(() => {
-//     axios.get(`http://localhost:4000/publicacion/listar`)
-//         .then((getData) => {
-//             setApiData(getData.data);
-//         })
-// }, [])
+  let navigate = useNavigate();
+  const [titulo, setTitulo] = useState();
+  const [descripcion, setDescripcion] = useState();
+
+  let register = async (e) => {
+    const idUser = localStorage.getItem('idUsuario');
+    e.preventDefault();
+    try {
+      let res = await fetch("http://localhost:4000/publicacion/crear", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          titulo: titulo,
+          descripcion: descripcion,
+          idImagen: 1,
+          idUsuario: idUser,
+        }),
+      });
+      swal({
+        title: "Publicación creada con éxito!",
+        // text: "",
+        icon: "success",
+        button: "Aceptar",
+      });
+      console.log("Creado");
+      navigate("/perfil");
+    } catch (error) {
+      console.log(error);
+    }
+  }
 
   return (
     <div className="container-fluid bodypub">
       
         <div className="row">
           <div className="col-2">
-        
             <Sidebar />
           </div>
-          <div className="col-10 text-center mt-3 inv">
+          <form className="col-9 text-center mt-3 inv"  onSubmit={register}>
             <h3>
               Invita a tus contactos para que formen parte de tu comunidad y en
               caso de emergencia poder contactarlos rápidamente
@@ -33,33 +60,35 @@ const Publicaciones = () => {
               que tus contactos se puedan registrar
             </h5>{" "}
             <br /> <br />
-            <div class="input-group cod">
-              <input type="text" placeholder="Tú código" class="form-control" />
+            {/* <div className="input-group cod">
+              <input type="text" placeholder="Tú código" className="form-control" />
             </div>
-            <br /> <br />
-            <div class="mb-3">
-              <label for="exampleFormControlInput1" class="tit">
+            <br /> <br /> */}
+            <div className="mb-3">
+              <label for="exampleFormControlInput1" className="tit">
                 Título de la publicación
               </label>
               <input
                 type="text"
-                class="form-control cod"
+                className="form-control cod"
                 id="exampleFormControlInput1"
-                placeholder="Título aquí"
+                // placeholder="Título aquí"
+                onChange={e => setTitulo(e.target.value)}
               />
             </div>
-            <div class="mb-3">
-              <label for="exampleFormControlTextarea1" class="form-label tit">
+            <div className="mb-3">
+              <label for="exampleFormControlTextarea1" className="form-label tit">
                 Descripción
               </label>
               <textarea
-                class="form-control cod"
+                className="form-control cod"
                 id="exampleFormControlTextarea1"
                 rows="6"
+                onChange={e => setDescripcion(e.target.value)}
               ></textarea>
             </div>
-            <input type="submit" class="btn btn-primary btnenv" />
-          </div>
+            <input type="submit" className="btn btn-primary btnenv" />
+          </form>
         </div>
         </div>
   );

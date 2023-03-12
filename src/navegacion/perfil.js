@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { useNavigate } from "react-router";
 
 import Sidebar from "./Sidebar";
 import "./css/perfil.css";
@@ -10,6 +11,7 @@ import { borderColor } from "@mui/system";
 
 const Perfil = () => {
   const [data, setApiData] = useState([]);
+  let navigate = useNavigate();
 
   const [id, setId] = useState('');
   const [nombre, setNombre] = useState('');
@@ -28,6 +30,10 @@ const Perfil = () => {
     SetfechaNac(localStorage.getItem('fechaNac'));
     SetSangre(localStorage.getItem('sangre'));
   }, [])
+
+  if(nombre == null || apePat== null || apeMat== null || correo == null || fechaNac == null || sangre == null) {
+    navigate("*");
+  }
 
   return (
     <div>
@@ -91,7 +97,6 @@ const Perfil = () => {
                           type="text"
                           class="form-control1"
                           value={apePat}
-                          placeholder="Hernández"
                           disabled
                         />
                       </div>

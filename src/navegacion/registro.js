@@ -5,14 +5,13 @@ import { Link } from "react-router-dom";
 import UsuarioServicio from "../servicios/UsuarioServicios";
 import { ROLES } from "../utils/Constantes";
 import { encryptStorage } from "../utils/Storage";
+
 import Layout from "./Layout";
 import Styles from "./css/registro.css";
-//import { FormLabel } from "@mui/material";
 import { RadioGroup } from "@mui/material";
 import { FormControlLabel } from "@mui/material";
 import { Radio } from "@mui/material";
 import Checkbox from "@mui/material/Checkbox";
-
 import swal from "sweetalert";
 
 const Registro = () => {
@@ -29,6 +28,15 @@ const Registro = () => {
 
   let register = async (e) => {
     e.preventDefault();
+    if (password.length < 8) {
+      swal({
+        title: "La contraseña debe tener al menos 8 caracteres.",
+        text: "Por favor, ingrese nuevamente la contraseña ",
+        icon: "warning",
+        button: "Aceptar",
+      });
+      return;
+    }
     try {
       let res = await fetch("http://localhost:4000/usuario/crear", {
         method: "POST",
