@@ -27,11 +27,13 @@ const Registro = () => {
   const [sexo, setSexo] = useState();
 
   let register = async (e) => {
+    const regex = /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/;
+    
     e.preventDefault();
-    if (password.length < 8) {
+    if (!regex.test(password)) {
       swal({
-        title: "La contraseña debe tener al menos 8 caracteres.",
-        text: "Por favor, ingrese nuevamente la contraseña ",
+        title: "Contraseña invalida",
+        text: "La contraseña debe tener entre 8 y 16 caracteres, al menos un dígito, al menos una minúscula, al menos una mayúscula y un caracter especial.",
         icon: "warning",
         button: "Aceptar",
       });

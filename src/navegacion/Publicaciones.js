@@ -64,10 +64,10 @@ const Publicaciones = () => {
               caso de emergencia poder contactarlos rápidamente
             </h3>{" "}
             <br />
-            <h5>
+            {/* <h5>
               Copia tu enlace de invitación o comparte en redes sociales para
               que tus contactos se puedan registrar
-            </h5>{" "}
+            </h5>{" "} */}
             <br /> <br />
             {/* <div className="input-group cod">
               <input type="text" placeholder="Tú código" className="form-control" />

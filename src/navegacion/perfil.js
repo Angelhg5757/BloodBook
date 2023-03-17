@@ -8,30 +8,93 @@ import { MdBloodtype } from "react-icons/md";
 import { BiHappyBeaming } from "react-icons/bi";
 import images from "../assets/imagenes";
 import { borderColor } from "@mui/system";
+import swal from "sweetalert";
 
 const Perfil = () => {
   const [data, setApiData] = useState([]);
   let navigate = useNavigate();
 
-  const [id, setId] = useState('');
-  const [nombre, setNombre] = useState('');
-  const [apePat, setApePat] = useState('');
-  const [apeMat, setApeMat] = useState('');
-  const [correo, setCorreo] = useState('');
-  const [fechaNac, SetfechaNac] = useState('');
-  const [sangre, SetSangre] = useState('');
+  const [id, setId] = useState("");
+  const [nombre, setNombre] = useState("");
+  const [apePat, setApePat] = useState("");
+  const [apeMat, setApeMat] = useState("");
+  const [correo, setCorreo] = useState("");
+  const [fechaNac, SetfechaNac] = useState("");
+  const [sangre, SetSangre] = useState("");
+
+  const [telefono, SetTelefono] = useState("");
+  const [correoPublico, SetEmail] = useState("");
 
   useEffect(() => {
-    setId(localStorage.getItem('idUsuario'));
-    setNombre(localStorage.getItem('nombre'));
-    setApePat(localStorage.getItem('apePat'));
-    setApeMat(localStorage.getItem('apeMat'));
-    setCorreo(localStorage.getItem('correo'));
-    SetfechaNac(localStorage.getItem('fechaNac'));
-    SetSangre(localStorage.getItem('sangre'));
-  }, [])
+    setId(localStorage.getItem("idUsuario"));
+    setNombre(localStorage.getItem("nombre"));
+    setApePat(localStorage.getItem("apePat"));
+    setApeMat(localStorage.getItem("apeMat"));
+    setCorreo(localStorage.getItem("correo"));
+    SetfechaNac(localStorage.getItem("fechaNac"));
+    SetSangre(localStorage.getItem("sangre"));
+  }, []);
 
-  if(nombre == null || apePat== null || apeMat== null || correo == null || fechaNac == null || sangre == null) {
+  let register = async (e) => {
+    e.preventDefault();
+    if (telefono.length < 10) {
+      swal({
+        title: "Teléfono invalido",
+        text: "El teléfono debe ser de 10 digitos",
+        icon: "warning",
+        button: "Aceptar",
+      });
+      return;
+    }
+    try {
+      let res = await fetch("http://localhost:4000/contacto/crear", {
+        method: "POST",
+        headers: {
+          Accept: "application/json",
+          "content-type": "application/json",
+        },
+        body: JSON.stringify({
+          telefono: telefono,
+          correoPublico: correoPublico,
+          idUsuario: id,
+        }),
+      });
+      swal({
+        title: "Contacto registrado con éxito!",
+        text: "Tu información ha sido completada",
+        icon: "success",
+        button: "Aceptar",
+      });
+      // navigate("/login");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  const idUsuario = localStorage.getItem("idUsuario");
+
+  // useEffect(() => {
+  //   axios.get(`http://localhost:4000/contacto/listarUser/${idUsuario}`)
+  //     .then((getData) => {
+  //       if(getData.data){
+  //         setApiData(getData.data);
+  //         setIsInputDisabled(true);
+  //       } else {
+  //         setApiData({});
+  //         setIsInputDisabled(false);
+  //       }
+        
+  //     });
+  // }, []);
+
+  if (
+    nombre == null ||
+    apePat == null ||
+    apeMat == null ||
+    correo == null ||
+    fechaNac == null ||
+    sangre == null
+  ) {
     navigate("*");
   }
 
@@ -43,121 +106,122 @@ const Perfil = () => {
             <Sidebar />
           </div>
           <div className="col-10">
-            {/* <div className="card">
-              <div className="card-body"> 
-              <div className="card-text">
-                    <h3>Tu tipo de sangre</h3> 
-                  </div> 
-                  <MdBloodtype className="w-100 h-100" />
-                </div>
-              </div>
-              <div className="card">
-              <div className="card-body"> 
-              <div className="card-text">
-                    <h3>Tus publicaciones</h3> 
-                  </div> 
-                  <BiHappyBeaming className="w-100 h-100" />
-                </div>
-              </div> */}
-            <div class="containerpro rounded bg-white mt-5 mb-5">
-              <div class="row">
-                <div class="col-md-3 border-right">
-                  <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+            <div className="containerpro rounded bg-white mt-5 mb-5">
+              <div className="row">
+                <div className="col-md-3 border-right">
+                  <div className="d-flex flex-column align-items-center text-center p-3 py-5">
                     <img
-                      class="rounded-circle mt-5"
+                      className="rounded-circle mt-5"
                       width="150px"
                       //https://st3.depositphotos.com/15648834/17930/v/600/depositphotos_179308454-stock-illustration-unknown-person-silhouette-glasses-profile.jpg
                       src={images.avatar}
                     />
-                    <span class="font-weight-bold">{nombre}</span>
-                    <span class="text-black-50">{correo}</span>
+                    <span className="font-weight-bold">{nombre}</span>
+                    <span className="text-black-50">{correo}</span>
                     <span> </span>
                   </div>
                 </div>
-                <div class="col-md-5 border-right">
-                  <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                      <h4 class="text-right"> BLOODBOOK</h4>
+                <div className="col-md-4 border-right">
+                  <div className="p-3 py-5">
+                    <div className="d-flex justify-content-between align-items-center mb-3">
+                      <h4 className="text-right"> BLOODBOOK</h4>
                     </div>
-                    <div class="row mt-2">
-                      <div class="col-md-6">
-                        <label class="labels">Nombre:</label>
+                    <div className="row mt-2">
+                      <div className="form-group">
+                        <label className="labels">Nombre:</label>
                         <input
                           type="text"
-                          class="form-control1"
+                          className="form-control"
                           placeholder=""
                           value={nombre}
                           disabled
                         />
                       </div>
                       <p></p>
-                      <div class="col-md-6">
-                        <label class="labels">Apellido Paterno:</label>
+                      <div className="form-group">
+                        <label className="labels">Apellido Paterno:</label>
                         <input
                           type="text"
-                          class="form-control1"
+                          className="form-control"
                           value={apePat}
                           disabled
                         />
                       </div>
                     </div>
                     <p></p>
-                    <div class="row mt-3">
-                      <div class="col-md-6">
-                        <label class="labels">Apellido Materno:</label>
+                    <div className="row mt-3">
+                      <div className="form-group">
+                        <label className="labels">Apellido Materno:</label>
                         <input
                           type="text"
-                          class="form-control1"
+                          className="form-control"
                           placeholder=""
                           value={apeMat}
                           disabled
                         />
                       </div>
                       <p></p>
-                      <div class="col-md-12">
-                        <label class="labels">Correo:</label>
-                        <p></p>
+                      <div className="form-group">
+                        <label className="labels">Correo:</label>
                         <input
                           type="text"
-                          class="form-control1"
+                          className="form-control"
                           placeholder=""
                           value={correo}
                           disabled
                         />
                       </div>
                       <p></p>
-                      <div class="col-md-12">
-                        <label class="labels">Fecha de nacimiento</label>
-                        <p></p>
+                      <div className="form-group">
+                        <label className="labels">Fecha de nacimiento</label>
                         <input
                           type="text"
-                          class="form-control1"
+                          className="form-control"
                           placeholder=""
                           value={fechaNac}
                           disabled
                         />
                       </div>
-                      <div class="col-md-12">
-                        <label class="labels">Tipo de sangre</label>
-                        <p></p>
+                      <p></p>
+                      <div className="form-group">
+                        <span className="labels">Tipo de sangre</span>
                         <input
                           type="text"
-                          class="form-control1"
+                          className="form-control"
                           placeholder=""
                           value={sangre}
                           disabled
                         />
                       </div>
                     </div>
-                    {/* <div class="mt-5 text-center">
-                      <button
-                        class="btn btn-primary profile-button1"
-                        type="button"
-                      >
-                        Save Profile
-                      </button>
-                    </div> */}
                   </div>
+                </div>
+                <div className="col-md-4 border-right">
+                  <form className="p-3 py-5" onSubmit={register}>
+                    <h4>Contacto</h4>
+                    <div className="form-group">
+                      <label>Teléfono:</label>
+                      <input
+                        type="text"
+                        className="form-control"
+                        required
+                        onChange={e => SetTelefono(e.target.value)}
+                      />
+                      
+                    </div>
+                    <div className="form-group">
+                      <label>Correo electrónico público:</label>
+                      <input
+                        type="email"
+                        className="form-control"
+                        required
+                        onChange={e => SetEmail(e.target.value)}
+                      />
+                    </div>
+                    <div className="mt-4 text-center">
+                      <input className="btn btn-primary profile-button1" type="submit" value="Crear" />
+                    </div>
+                  </form>
                 </div>
               </div>
             </div>
