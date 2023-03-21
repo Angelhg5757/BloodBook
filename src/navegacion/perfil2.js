@@ -2,15 +2,13 @@ import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
-import Sidebar from "./Sidebar";
+import Sidebar2 from "./Sidebar2";
 import "./css/perfil.css";
-import { MdBloodtype } from "react-icons/md";
-import { BiHappyBeaming } from "react-icons/bi";
 import images from "../assets/imagenes";
 import { borderColor } from "@mui/system";
 import swal from "sweetalert";
 
-const Perfil = () => {
+const Perfil2 = () => {
   const [data, setApiData] = useState([]);
   let navigate = useNavigate();
 
@@ -73,20 +71,6 @@ const Perfil = () => {
 
   const idUsuario = localStorage.getItem("idUsuario");
 
-  // useEffect(() => {
-  //   axios.get(`http://localhost:4000/contacto/listarUser/${idUsuario}`)
-  //     .then((getData) => {
-  //       if(getData.data){
-  //         setApiData(getData.data);
-  //         setIsInputDisabled(true);
-  //       } else {
-  //         setApiData({});
-  //         setIsInputDisabled(false);
-  //       }
-        
-  //     });
-  // }, []);
-
   if (
     nombre == null ||
     apePat == null ||
@@ -103,7 +87,7 @@ const Perfil = () => {
       <div className="container-fluid bodyper">
         <div className="row">
           <div className="col-2">
-            <Sidebar />
+            <Sidebar2 />
           </div>
           <div className="col-10">
             <div className="containerpro rounded bg-white mt-5 mb-5">
@@ -232,4 +216,4 @@ const Perfil = () => {
   );
 };
 
-export default Perfil;
+export default Perfil2;

@@ -60,8 +60,7 @@ const Publicaciones = () => {
           </div>
           <form className="col-9 text-center mt-3 inv"  onSubmit={register}>
             <h3>
-              Invita a tus contactos para que formen parte de tu comunidad y en
-              caso de emergencia poder contactarlos rápidamente
+              Crea publicaciones para que las personas puedan conocer tu situación y puedas contactar a un donador
             </h3>{" "}
             <br />
             {/* <h5>

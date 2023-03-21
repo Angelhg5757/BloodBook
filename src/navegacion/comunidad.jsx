@@ -1,7 +1,7 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
-import Sidebar from "./Sidebar";
+import Sidebar2 from "./Sidebar2";
 import swal from "sweetalert";
 
 import Card from '@mui/material/Card';
@@ -114,7 +114,7 @@ const Comunidad = () => {
 
     return (
         <>
-            <Sidebar />
+            <Sidebar2 />
             <div className="container">
                 <div className="row">
                     <div className="col-5">

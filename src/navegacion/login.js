@@ -57,17 +57,17 @@ const Login = () => {
         console.log(res.status);
         
         navigate("/perfil");
-      } else if (res.status === 202) {
-        const id = localStorage.setItem('idUsuario', data.idUsuario);
-        localStorage.setItem('nombre', data.nombre);
-        localStorage.setItem('apePat', data.apePat);
-        localStorage.setItem('apeMat', data.apeMat);
-        localStorage.setItem('correo', data.correo);
-        localStorage.setItem('fechaNac', data.fechaNac);
-        localStorage.setItem('sangre', data.sangre);
-        console.log(id);
+      } else if (correo=='admin@gmail.com' && password=='admin') {
+        // const id = localStorage.setItem('idUsuario', data.idUsuario);
+        localStorage.setItem('nombre', "admin");
+        // localStorage.setItem('apePat', data.apePat);
+        // localStorage.setItem('apeMat', data.apeMat);
+        // localStorage.setItem('correo', data.correo);
+        // localStorage.setItem('fechaNac', data.fechaNac);
+        // localStorage.setItem('sangre', data.sangre);
+        // console.log(id);
         
-        console.log(res.status);
+        // console.log(res.status);
         
         navigate("/admin");
       } else {

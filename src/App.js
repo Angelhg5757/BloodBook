@@ -16,6 +16,7 @@ import UpdateUsuarios from './navegacion/Dashboard/updateUsuarios';
 import  Sidebar  from './navegacion/Sidebar'; 
 import Publicaciones from './navegacion/Publicaciones';
 import Perfil from './navegacion/perfil';
+import Perfil2 from './navegacion/perfil2';
 import Comunidad from './navegacion/comunidad';
 
 function App() {
@@ -28,6 +29,7 @@ function App() {
           <Route path='/acerca' element={<Acerca />} />
           <Route path='/donador' element={<Donador />} />
           <Route path='/perfil' element={<Perfil />} />
+          <Route path='/perfilDonador' element={<Perfil2 />} />
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
           <Route path='/comunidad' element={<Comunidad />} />
