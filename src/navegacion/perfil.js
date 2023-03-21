@@ -117,7 +117,7 @@ const Perfil = () => {
                       src={images.avatar}
                     />
                     <span className="font-weight-bold">{nombre}</span>
-                    <span className="text-black-50">{correo}</span>
+                    <span className="text-black-50" style={{fontSize: '12px'}}>{correo}</span>
                     <span> </span>
                   </div>
                 </div>
