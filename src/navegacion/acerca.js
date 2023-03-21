@@ -32,13 +32,13 @@ const Acerca = () => {
               <div className="container">
                 <h2>José Carrasco</h2>
                 <p className="title">Ingeniero de pruebas</p>
-                <p className="text">
+                {/* <p className="text">
                   Some text that describes me lorem ipsum ipsum lorem.
-                </p>
+                </p> */}
                 <p className="text">jos@example.com</p>
-                <p className="text">
+                {/* <p className="text">
                   <button className="button1">Contact</button>
-                </p>
+                </p> */}
               </div>
             </div>
           </div>
@@ -55,11 +55,11 @@ const Acerca = () => {
               <div className="container">
                 <h2>Ángel Hernández</h2>
                 <p className="title">Programador</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                {/* <p>Some text that describes me lorem ipsum ipsum lorem.</p> */}
                 <p>angel@example.com</p>
-                <p>
+                {/* <p>
                   <button className="button1">Contact</button>
-                </p>
+                </p> */}
               </div>
             </div>
           </div>
@@ -76,11 +76,11 @@ const Acerca = () => {
               <div className="container">
                 <h2>Fabiola Martínez</h2>
                 <p className="title">Análista de Base de datos</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                {/* <p>Some text that describes me lorem ipsum ipsum lorem.</p> */}
                 <p>fabi@example.com</p>
-                <p>
+                {/* <p>
                   <button className="button1">Contact</button>
-                </p>
+                </p> */}
               </div>
             </div>
           </div>
@@ -97,11 +97,11 @@ const Acerca = () => {
               <div className="container">
                 <h2>Isamayi Velasco</h2>
                 <p className="title">Análista de requerimientos</p>
-                <p>Some text that describes me lorem ipsum ipsum lorem.</p>
+                {/* <p>Some text that describes me lorem ipsum ipsum lorem.</p> */}
                 <p>Mey@example.com</p>
-                <p>
+                {/* <p>
                   <button className="button1">Contact</button>
-                </p>
+                </p> */}
               </div>
             </div>
           </div>
