@@ -2,6 +2,7 @@ import Layout from "./Layout";
 import Footer from "./footer";
 import Divider from "@mui/material/Divider";
 import Chip from "@mui/material/Chip";
+import "./css/terminos.css";
 
 const Terminos = () => {
   return (
@@ -9,7 +10,7 @@ const Terminos = () => {
     <>
       <Layout />
       <div>
-        <div className="container mt-5">
+        <div className="container-mt-5">
           <h1>Términos y condiciones</h1>
           <p>
             Cualquier persona (en lo sucesivo, el Usuario) que utilice la
@@ -114,6 +115,7 @@ const Terminos = () => {
             propiedad intelectual e industrial.
             <br></br>
           </p>
+          <br></br>
           <Divider>
             <Chip label="Sitio web y contenidos, BloodBook es el propietario" />
           </Divider>
@@ -126,6 +128,7 @@ const Terminos = () => {
           <Divider>
             <Chip label="Información de carácter personal o confidencial" />
           </Divider>
+          <br></br>
           <p>
             El Usuario autoriza expresamente a BloodBook a utilizar, tratar y
             gestionar cualquier información (incluida la información personal o
