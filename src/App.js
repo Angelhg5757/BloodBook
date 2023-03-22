@@ -18,6 +18,7 @@ import Publicaciones from './navegacion/Publicaciones';
 import Perfil from './navegacion/perfil';
 import Perfil2 from './navegacion/perfil2';
 import Comunidad from './navegacion/comunidad';
+import Terminos from './navegacion/terminos';
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path='/perfilDonador' element={<Perfil2 />} />
           <Route path='/login' element={<Login />} />
           <Route path='/registro' element={<Registro />} />
+          <Route path='/terminos' element={<Terminos />} />
           <Route path='/comunidad' element={<Comunidad />} />
           <Route path='/publicaciones' element={<Publicaciones/>} />
           <Route path='/admin' element={<Dashboard />} />

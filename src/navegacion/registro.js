@@ -1,9 +1,7 @@
 //import axios from 'axios';
 import React, { useState } from "react";
 import { useNavigate } from "react-router";
-import { Link } from "react-router-dom";
 import UsuarioServicio from "../servicios/UsuarioServicios";
-import { ROLES } from "../utils/Constantes";
 import { encryptStorage } from "../utils/Storage";
 
 import Layout from "./Layout";
@@ -26,9 +24,17 @@ const Registro = () => {
   const [idSangre, setSangre] = useState();
   const [sexo, setSexo] = useState();
 
+  const today = new Date();
+  const maxDate = today.toISOString().split('T')[0];
+
+  const [open, setOpen] = React.useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   let register = async (e) => {
-    const regex = /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/;
-    
+    const regex =
+      /^(?=.*\d)(?=.*[\u0021-\u002b\u003c-\u0040])(?=.*[A-Z])(?=.*[a-z])\S{8,16}$/;
+
     e.preventDefault();
     if (!regex.test(password)) {
       swal({
@@ -39,34 +45,54 @@ const Registro = () => {
       });
       return;
     }
-    try {
-      let res = await fetch("http://localhost:4000/usuario/crear", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          nombre: nombre,
-          apePat: apePat,
-          apeMat: apeMat,
-          correo: correo,
-          password: password,
-          fechaNac: fecha,
-          idRoles: idRol,
-          idSangre: idSangre,
-          sexo: sexo,
-        }),
-      });
+    if (idRol === undefined || idSangre === undefined) {
       swal({
-        title: "Usuario registrado con éxito!",
-        text: "Hola " + nombre + ", ya puedes iniciar sesión!",
-        icon: "success",
+        title: "Ups, parece que no haz completado todos los campos",
+        text: "Por favor, ingrese todos los datos",
+        icon: "warning",
         button: "Aceptar",
       });
-      navigate("/login");
-    } catch (error) {
-      console.log(error);
+    } else {
+      try {
+        let res = await fetch("http://localhost:4000/usuario/crear", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            nombre: nombre,
+            apePat: apePat,
+            apeMat: apeMat,
+            correo: correo,
+            password: password,
+            fechaNac: fecha,
+            idRoles: idRol,
+            idSangre: idSangre,
+            sexo: sexo,
+          }),
+        });
+        console.log(idRol);
+        console.log(idSangre);
+        if (res.status === 500) {
+          swal({
+            title: "El correo electrónico ya está registrado",
+            text: "Por favor, ingrese otro correo válido.",
+            icon: "warning",
+            button: "Aceptar",
+          });
+        } else {
+          swal({
+            title: "Usuario registrado con éxito!",
+            text: "Hola " + nombre + ", ya puedes iniciar sesión!",
+            icon: "success",
+            button: "Aceptar",
+          });
+          navigate("/login");
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -82,33 +108,66 @@ const Registro = () => {
               <div className="user-details">
                 <div className="input-box">
                   <span className="details">Nombre</span>
-                  <input type="text" required onChange={e => setNombre(e.target.value)}/>
+                  <input
+                    type="text"
+                    required
+                    onChange={(e) => setNombre(e.target.value)}
+                  />
                 </div>
                 <div className="input-box">
                   <span className="details">Apellido Paterno</span>
-                  <input type="text" required onChange={e => setApepat(e.target.value)}/>
+                  <input
+                    type="text"
+                    required
+                    onChange={(e) => setApepat(e.target.value)}
+                  />
                 </div>
                 <div className="input-box">
                   <span className="details">Apellido Materno</span>
-                  <input type="text" required onChange={e => setApemat(e.target.value)}/>
+                  <input
+                    type="text"
+                    required
+                    onChange={(e) => setApemat(e.target.value)}
+                  />
                 </div>
                 <div className="input-box">
                   <span className="details">Email</span>
-                  <input type="email" placeholder="@ejemplo.com" required onChange={e => setCorreo(e.target.value)}/>
+                  <input
+                    type="email"
+                    placeholder="@ejemplo.com"
+                    required
+                    onChange={(e) => setCorreo(e.target.value)}
+                  />
                 </div>
                 <div className="input-box">
                   <span className="details">Contraseña</span>
-                  <input type="password" required onChange={e => setPassword(e.target.value)}/>
+                  <input
+                    type="password"
+                    required
+                    onChange={(e) => setPassword(e.target.value)}
+                  />
                 </div>
                 <div className="input-box">
-                  <span className="details">Fecha de nacimiento</span>
-                  <input type="date" required onChange={e => setFecha(e.target.value)}/>
+                  <span className="details" >Fecha de nacimiento</span>
+                  <input 
+                    type="date"
+                    required
+                    max={maxDate}
+                    onChange={(e) => setFecha(e.target.value)}
+                  />
                 </div>
                 <div className="input-box">
                   <span className="details">Tipo Sanguíneo</span>
 
-                  <select name="sangre" id="sangre" onChange={e => setSangre(e.target.value)}>
-                    <option selected="true" disabled="disabled">Seleccione</option>
+                  <select
+                    name="sangre"
+                    id="sangre"
+                    required
+                    onChange={(e) => setSangre(e.target.value)}
+                  >
+                    <option selected="true" disabled="disabled">
+                      Seleccione
+                    </option>
                     <option value="1">A+</option>
                     <option value="2">A-</option>
                     <option value="3">B+</option>
@@ -122,13 +181,19 @@ const Registro = () => {
                 <div className="input-box">
                   <span className="details">¿Qué quieres ser?</span>
 
-                  <select name="rol" id="rol" onChange={e => setRol(e.target.value)}>
-                    <option selected="true" disabled="disabled">Seleccione</option>
+                  <select
+                    name="rol"
+                    id="rol"
+                    required
+                    onChange={(e) => setRol(e.target.value)}
+                  >
+                    <option selected="true" disabled="disabled">
+                      Seleccione
+                    </option>
                     <option value="1">Donador</option>
                     <option value="2">Paciente</option>
                   </select>
                 </div>
-
               </div>
 
               <div className="input-box">
@@ -137,7 +202,7 @@ const Registro = () => {
                   row
                   aria-labelledby="demo-row-radio-buttons-group-label"
                   name="row-radio-buttons-group"
-                  onChange={e => setSexo(e.target.value)}
+                  onChange={(e) => setSexo(e.target.value)}
                 >
                   <FormControlLabel
                     value="F"
@@ -156,12 +221,14 @@ const Registro = () => {
                   />
                 </RadioGroup>
               </div>
+              <div className="input-box">
+                <a href="/terminos" target={"_blank"} style={{fontSize: '18px', color: '#1E4CA1', fontWeight: '500'}}>Términos y Condiciones</a>
+              </div>
               <FormControlLabel
                 control={<Checkbox />}
                 label="Acepto los términos y condiciones."
                 required
               />
-
               <div className="button2">
                 <input className="buttons2" type="submit" value="Crear" />
               </div>
@@ -174,96 +241,3 @@ const Registro = () => {
 };
 
 export default Registro;
-
-// {/* <div className="contenedor2">
-//         <h1 className="title-1">Registrarse</h1>
-//         <div className="content1">
-//           <form method="POST" onSubmit={register} className="form2">
-//             {/* <TextField
-//                   id="standard-basic"
-//                   label="Correo Electronico"
-//                   variant="standard"
-//                   InputLabelProps={{
-//                     style: { color: "#fff" },
-//                   }}
-//                   sx={{
-//                     input: {
-//                       color: "#fff",
-//                       borderColor: "text.primary",
-//                     },
-//                   }}
-//                 /> */}
-//             <input
-//               type="text"
-//               name="nombre"
-//               placeholder="Nombre"
-//               className="controls2"
-//             />
-
-//             <input
-//               type="text"
-//               name="apellido"
-//               placeholder="Apellido"
-//               className="controls2"
-//             />
-
-//             <input
-//               type="email"
-//               name="email"
-//               placeholder="Correo Electrónico"
-//               className="controls2"
-//               onChange={(e) => setCorreo(e.target.value)}
-//             />
-
-//             <input
-//               type="password"
-//               name="password"
-//               placeholder="Contraseña"
-//               className="controls2"
-//               onChange={(e) => setPassword(e.target.value)}
-//             />
-
-//             <FormLabel id="demo-row-radio-buttons-group-label">
-//               Género
-//             </FormLabel>
-//             <RadioGroup
-//               row
-//               aria-labelledby="demo-row-radio-buttons-group-label"
-//               name="row-radio-buttons-group"
-//             >
-//               <FormControlLabel
-//                 value="femenino"
-//                 control={<Radio />}
-//                 label="Femenino"
-//               />
-//               <FormControlLabel
-//                 value="masculino"
-//                 control={<Radio />}
-//                 label="Masculino"
-//               />
-//               <FormControlLabel value="otro" control={<Radio />} label="Otro" />
-//             </RadioGroup>
-
-//             <FormLabel id="demo-row-radio-buttons-group-label">
-//               Tipo de Sangre
-//             </FormLabel>
-
-//             <select name="sangre" id="sangre">
-//               <option value="A+">A+</option>
-//               <option value="A-">A-</option>
-//               <option value="B+">B+</option>
-//               <option value="B-">B-</option>
-//               <option value="AB+">AB+</option>
-//               <option value="AB-">AB-</option>
-//               <option value="O+">O+</option>
-//               <option value="O-">O-</option>
-//             </select>
-//             <div className="boto">
-//               <input className="buttons2" type="submit" value="Crear" />
-//               <Link to="/login">
-//                 <button className="buttons3">Cancelar</button>
-//               </Link>
-//             </div>
-//           </form>
-//         </div>
-//       </div> */}

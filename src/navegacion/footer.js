@@ -38,7 +38,7 @@ function Footer() {
           </section>
         </div>
 
-        <div class="text-center p-3">© 2023 Copyright Empresa</div>
+        <div class="text-center p-3">© 2023 BloodBook</div>
       </footer>
     </>
   );
