@@ -33,6 +33,46 @@ const Perfil2 = () => {
     SetSangre(localStorage.getItem("sangre"));
   }, []);
 
+  const getData = () => {
+    axios.get(`http://localhost:4000/usuario/listar`).then((getData) => {
+      setApiData(getData.data);
+    });
+  };
+
+  const onDelete = () => {
+    swal({
+      title: "Eliminar usuario",
+      text: "¿Está seguro que desea eliminar su cuenta?",
+      icon: "warning",
+      buttons: ["No", "Si"],
+    }).then((elimina) => {
+      if (elimina) {
+        axios
+          .delete(`http://localhost:4000/usuario/eliminar/${id}`)
+          .then(() => {
+            getData();
+          });
+        swal({
+          title: "Adios amigo :(",
+          text: "Su usuario ha sido eliminado con éxito, gracias por usar la plataforma!",
+          icon: "success",
+          buttons: "Aceptar",
+        }).then((acepta) => {
+          if (acepta) {
+            navigate("/inicio", { replace: true });
+            localStorage.removeItem("idUsuario");
+            localStorage.removeItem("nombre");
+            localStorage.removeItem("apePat");
+            localStorage.removeItem("apeMat");
+            localStorage.removeItem("correo");
+            localStorage.removeItem("fechaNac");
+            localStorage.removeItem("sangre");
+          }
+        });
+      }
+    });
+  };
+
   let register = async (e) => {
     e.preventDefault();
     if (telefono.length < 10) {
@@ -43,29 +83,37 @@ const Perfil2 = () => {
         button: "Aceptar",
       });
       return;
-    }
-    try {
-      let res = await fetch("http://localhost:4000/contacto/crear", {
-        method: "POST",
-        headers: {
-          Accept: "application/json",
-          "content-type": "application/json",
-        },
-        body: JSON.stringify({
-          telefono: telefono,
-          correoPublico: correoPublico,
-          idUsuario: id,
-        }),
-      });
+    } else if (telefono === undefined || correoPublico === undefined) {
       swal({
-        title: "Contacto registrado con éxito!",
-        text: "Tu información ha sido completada",
-        icon: "success",
+        title: "Complete los campos",
+        text: "Por favor rellene todos los campos",
+        icon: "warning",
         button: "Aceptar",
       });
-      // navigate("/login");
-    } catch (error) {
-      console.log(error);
+    } else {
+      try {
+        let res = await fetch("http://localhost:4000/contacto/crear", {
+          method: "POST",
+          headers: {
+            Accept: "application/json",
+            "content-type": "application/json",
+          },
+          body: JSON.stringify({
+            telefono: telefono,
+            correoPublico: correoPublico,
+            idUsuario: id,
+          }),
+        });
+        swal({
+          title: "Contacto registrado con éxito!",
+          text: "Tu información ha sido completada",
+          icon: "success",
+          button: "Aceptar",
+        });
+        // navigate("/login");
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 
@@ -81,6 +129,11 @@ const Perfil2 = () => {
   ) {
     navigate("*");
   }
+
+  const fechaC = localStorage.getItem("fechaNac");
+  const fechaFin = fechaC.slice(0, 10);
+  const partes = fechaFin.split("-");
+  const fechaFormateada = `${partes[2]}-${partes[1]}-${partes[0]}`;
 
   return (
     <div>
@@ -101,7 +154,12 @@ const Perfil2 = () => {
                       src={images.avatar}
                     />
                     <span className="font-weight-bold">{nombre}</span>
-                    <span className="text-black-50" style={{fontSize: '10px'}}>{correo}</span>
+                    <span
+                      className="text-black-50"
+                      style={{ fontSize: "10px" }}
+                    >
+                      {correo}
+                    </span>
                     <span> </span>
                   </div>
                 </div>
@@ -162,7 +220,7 @@ const Perfil2 = () => {
                           type="text"
                           className="form-control"
                           placeholder=""
-                          value={fechaNac}
+                          value={fechaFormateada}
                           disabled
                         />
                       </div>
@@ -189,9 +247,8 @@ const Perfil2 = () => {
                         type="text"
                         className="form-control"
                         required
-                        onChange={e => SetTelefono(e.target.value)}
+                        onChange={(e) => SetTelefono(e.target.value)}
                       />
-                      
                     </div>
                     <div className="form-group">
                       <label>Correo electrónico público:</label>
@@ -199,13 +256,29 @@ const Perfil2 = () => {
                         type="email"
                         className="form-control"
                         required
-                        onChange={e => SetEmail(e.target.value)}
+                        onChange={(e) => SetEmail(e.target.value)}
                       />
                     </div>
                     <div className="mt-4 text-center">
-                      <input className="btn btn-primary profile-button1" type="submit" value="Crear" />
+                      <input
+                        className="btn btn-primary profile-button1"
+                        type="submit"
+                        value="Crear"
+                      />
                     </div>
                   </form>
+                  <h4 className="text-right">Eliminar cuenta</h4>
+                  <p>Toda tu información será deshabilitada del sistema.</p>
+                  <p style={{ fontSize: "12px" }}>
+                    Nota: Esta acción es irreversible.
+                  </p>
+                  <button
+                    type="button"
+                    class="btn btn-danger"
+                    onClick={() => onDelete()}
+                  >
+                    Eliminar
+                  </button>
                 </div>
               </div>
             </div>

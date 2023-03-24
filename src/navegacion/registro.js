@@ -25,7 +25,10 @@ const Registro = () => {
   const [sexo, setSexo] = useState();
 
   const today = new Date();
-  const maxDate = today.toISOString().split('T')[0];
+  //const maxDate = today.toISOString().split("T")[0];
+  const minDate = new Date(today.getFullYear() - 18, today.getMonth(), today.getDate()).toISOString().split("T")[0];
+
+  const [isAccepted, setIsAccepted] = useState(false);
 
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
@@ -44,11 +47,18 @@ const Registro = () => {
         button: "Aceptar",
       });
       return;
-    }
-    if (idRol === undefined || idSangre === undefined) {
+    } else if (idRol === undefined || idSangre === undefined) {
       swal({
         title: "Ups, parece que no haz completado todos los campos",
         text: "Por favor, ingrese todos los datos",
+        icon: "warning",
+        button: "Aceptar",
+      });
+      console.log(isAccepted);
+    } else if (isAccepted === false) {
+      swal({
+        title: "Debe aceptar los términos y condiciones",
+        text: "Debe marcar la casilla de aceptar los términos y condiciones para continuar.",
         icon: "warning",
         button: "Aceptar",
       });
@@ -148,11 +158,12 @@ const Registro = () => {
                   />
                 </div>
                 <div className="input-box">
-                  <span className="details" >Fecha de nacimiento</span>
-                  <input 
+                  <span className="details">Fecha de nacimiento</span>
+                  <input
                     type="date"
                     required
-                    max={maxDate}
+                    max={minDate}
+                    //min={maxDate}
                     onChange={(e) => setFecha(e.target.value)}
                   />
                 </div>
@@ -222,10 +233,25 @@ const Registro = () => {
                 </RadioGroup>
               </div>
               <div className="input-box">
-                <a href="/terminos" target={"_blank"} style={{fontSize: '18px', color: '#1E4CA1', fontWeight: '500'}}>Términos y Condiciones</a>
+                <a
+                  href="/terminos"
+                  target={"_blank"}
+                  style={{
+                    fontSize: "18px",
+                    color: "#1E4CA1",
+                    fontWeight: "500",
+                  }}
+                >
+                  Términos y Condiciones
+                </a>
               </div>
               <FormControlLabel
-                control={<Checkbox />}
+                control={
+                  <Checkbox
+                    checked={isAccepted}
+                    onClick={() => setIsAccepted(true)}
+                  />
+                }
                 label="Acepto los términos y condiciones."
                 required
               />
